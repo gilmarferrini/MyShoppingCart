@@ -26,6 +26,6 @@
             android:layout_weight="1"
             android:text="@string/button_text_delete_item"
             android:textSize="12sp"
-            app:backgroundTint="#FF0303" />
+            app:backgroundTint="@color/button_delete" />
     </LinearLayout>
 </LinearLayout>
