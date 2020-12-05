@@ -3,6 +3,7 @@
 
     <string name="edit_text_item_hint">Digite o produto a ser comprado</string>
     <string name="button_text_save_item">Adicionar</string>
+    <string name="button_text_delete_item">Deletar</string>
 
     <string name="logo_content_description">Logo MyShoppingCart</string>
 </resources>
