@@ -24,7 +24,7 @@ public class ItemController extends AppDataBase implements ICrud<Item> {
 
         objData.put(ItemDataModel.NAME, obj.getName());
 
-        return false;
+        return insert(ItemDataModel.TABLE, objData);
     }
 
     @Override
