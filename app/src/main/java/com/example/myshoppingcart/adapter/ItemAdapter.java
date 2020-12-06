@@ -11,11 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myshoppingcart.R;
 import com.example.myshoppingcart.model.Item;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> {
 
-    private List<Item> itemsList;
+    private List<Item> itemsList = new ArrayList<>();
 
     @NonNull
     @Override
@@ -28,13 +29,16 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ItemAdapter.MyViewHolder holder, int position) {
-        holder.name.setText("Arroz");
+        Item item = itemsList.get(position);
+
+        holder.name.setText(item.getName());
     }
 
     @Override
     public int getItemCount() {
-        return 5;
+        return itemsList.size();
     }
+
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 

@@ -14,26 +14,38 @@ import android.widget.Toast;
 
 import com.example.myshoppingcart.R;
 import com.example.myshoppingcart.adapter.ItemAdapter;
+import com.example.myshoppingcart.controller.ItemController;
+import com.example.myshoppingcart.datamodel.ItemDataModel;
+import com.example.myshoppingcart.model.Item;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    ItemAdapter itemAdapter;
 
     private RecyclerView recyclerViewItems;
 
     private EditText editTextItem;
     private Button buttonSaveItem;
 
+    private ItemController itemController;
+    private Item item;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        itemController = new ItemController(MainActivity.this);
+        item = new Item();
 
         // selecionar recycler view
         recyclerViewItems = findViewById(R.id.recyclerViewItems);
 
-
         // configurar o adapter
-        ItemAdapter itemAdapter = new ItemAdapter();
+        itemAdapter = new ItemAdapter();
 
         // CONFIGURAR O RECYCLER VIEW
         // configurar o tipo de layout do recycler view
@@ -49,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         // set adapter
         recyclerViewItems.setAdapter(itemAdapter);
 
+        // adicionando os itens do banco de dados
         buttonSaveItem = findViewById(R.id.buttonSaveItem);
 
         buttonSaveItem.setOnClickListener(v -> {
@@ -60,7 +73,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void insertNewItem() {
         editTextItem = findViewById(R.id.editTextItem);
-        Toast.makeText(getApplicationContext(), editTextItem.getText().toString(), Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), editTextItem.getText().toString() + " adicionado", Toast.LENGTH_LONG).show();
+
+        item.setName(editTextItem.getText().toString());
+
+        itemController.store(item);
     }
 
 }
