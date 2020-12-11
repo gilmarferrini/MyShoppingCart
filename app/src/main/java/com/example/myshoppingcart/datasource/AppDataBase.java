@@ -52,7 +52,20 @@ public class AppDataBase extends SQLiteOpenHelper {
         return result;
     }
 
-    public List<Item> index(String tableName) {
+    public boolean delete(String tableName, int id) {
+        boolean result = false;
+        db = getWritableDatabase();
+
+        try {
+            result = db.delete(tableName, "id = ?", new String[] { String.valueOf(id) } ) > 0;
+        } catch (Exception e) {
+            Log.e("TAG", "AppDatabase deleteByID: " + e.getMessage());
+        }
+
+        return result;
+    }
+
+    public List<Item> find(String tableName) {
         List<Item> list = new ArrayList<>();
 
         db = getWritableDatabase();
