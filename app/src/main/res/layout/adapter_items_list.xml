@@ -14,10 +14,17 @@
 
         <TextView
             android:id="@+id/textViewNameItem"
+            android:layout_width="317dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Nome do item" />
+
+        <TextView
+            android:id="@+id/id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:text="Nome do item" />
+            android:layout_weight="1"
+            android:visibility="invisible" />
 
     </LinearLayout>
 </LinearLayout>
