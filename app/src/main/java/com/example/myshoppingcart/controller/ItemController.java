@@ -40,13 +40,11 @@ public class ItemController extends AppDataBase implements ICrud<Item> {
     @Override
     public boolean deleteByID(int id) {
 
-        return false;
+        return delete("items", id);
     }
 
     @Override
     public List<Item> index() {
-        List<Item> itemsList = new ArrayList<>();
-
-        return itemsList;
+        return find("items");
     }
 }
